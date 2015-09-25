@@ -1,0 +1,2439 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Data Visualisations with R</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Interactive Data Visualisations with R">
+  <meta name="author" content="Andrey Kostenko, June 25, 2015">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/nv.d3.css"></link>
+<link rel=stylesheet href="libraries/widgets/nvd3/css/rNVD3.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  <script src="libraries/widgets/nvd3/js/jquery-1.8.2.min.js"></script>
+<script src="libraries/widgets/nvd3/js/d3.v3.min.js"></script>
+<script src="libraries/widgets/nvd3/js/nv.d3.min-new.js"></script>
+<script src="libraries/widgets/nvd3/js/fisheye.js"></script>
+
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/logo.png">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>Interactive Data Visualisations with R</h1>
+    <h2>2nd WARG event, Perth, Australia</h2>
+    <p>Andrey Kostenko, June 25, 2015<br/></p>
+  </hgroup>
+    <a href="https://github.com/andrekos/WARG2/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+  <footer class = 'license'>
+    <a href='http://creativecommons.org/licenses/by-nc-sa/3.0/'>
+    <img width = '80px' src = 'http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png'>
+    </a>
+  </footer>
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h1>Agenda</h1>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><h2>Intro</h2></li>
+<li><h2>Package htmlwidgets</h2></li>
+<li><h2>Package rCharts</h2></li>
+<li><h2>Package googleVis</h2></li>
+<li><h2>Package plotly</h2></li>
+<li><h2>Coda</h2></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h3><strong>R</strong></h3>
+  </hgroup>
+  <article data-timings="">
+    <div class="alert alert-info">
+<h3>R is a programming language and software environment for statistical computing and graphics. R and its libraries implement a variety of statistical and graphical techniques. Dynamic and interactive graphics are available through R packages. </h3> 
+</div>
+
+<h3><strong>Data Visualisation</strong></h3>
+
+<div class="alert alert-info">
+<h3>Data visualization is the presentation of data in a pictorial or graphical format to understand information more easily and quickly.</h3> 
+</div>
+
+<h3><strong>Interactive</strong></h3>
+
+<div class="alert alert-info">
+<h3>Interactive charts. What does that mean?</h3> 
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>INTERACTIVE: <a href="#" rel="tooltip" data-original-title="Hi, I'm a Tooltip. I live in the title.">tooltipable</a>, clickable, transformable</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><iframe src=' assets/fig/unnamed-chunk-1-1.html ' scrolling='no' frameBorder='0' seamless class='rChart nvd3 ' id=iframe- chartb5c7af7653b ></iframe> <style>iframe.rChart{ width: 100%; height: 400px;}</style></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>INTERACTIVE: pan-zoomable aka zoom-panable</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="d2.html"> </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>INTERACTIVE: info-legends and series highlighting</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="d3.html"> </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="MR" style="background:;">
+  <hgroup>
+    <h2>JavaScript libraries make it possible</h2>
+  </hgroup>
+  <article data-timings="">
+    <script>
+$('#MR').on('slideenter', function(){
+  $(this).find('article')
+    .append('<iframe src="http://bl.ocks.org/mbostock/raw/3231298/"></iframe>')
+    
+});
+$('#MR').on('slideleave', function(){
+  $(this).find('iframe').remove();
+});
+</script>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="D3" style="background:;">
+  <hgroup>
+    <h2>D3.js - Data-Driven Documents</h2>
+  </hgroup>
+  <article data-timings="">
+    <script>
+$('#D3').on('slideenter', function(){
+  $(this).find('article')
+    .append('<iframe src="http://bl.ocks.org/mbostock/raw/1256572/"></iframe>')
+    
+});
+$('#D3').on('slideleave', function(){
+  $(this).find('iframe').remove();
+});
+</script>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Some of the key technologies</h2>
+  </hgroup>
+  <article data-timings="">
+    <div class="alert alert-danger alert-dismissible">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3>0. Standalone R wrappers for JS libraries</h3></div>
+
+<div class="alert alert-success">
+<h3>1. htmlwidgets framework to bridge R and JS </h3></div>
+
+<div class="alert alert-info">
+<h3>2. rCharts makes use of many JS libraries</h3></div>
+
+<div class="alert alert-warning">
+<h3>3. Google Chart API</h3></div>
+
+<div class="alert alert-danger">
+<h3>4. Plotly API </h3></div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2><div class="alert alert-success">Technology 1: Htmlwidgets </div></h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>htmlwidgets</strong> is one of the latest interactive data visualisation 
+technologies, developed specifically for R users and developers. It 
+aims to make it easy to:</p>
+
+<ul>
+<li><p>produce a D3 graphic or Leaflet map with a few lines of R code</p></li>
+<li><p>use JS visualization libraries at the R console, just like plots</p></li>
+<li><p>embed widgets in R Markdown docs and Shiny web apps</p></li>
+<li><p>develop new widgets using a framework that bridges R and JS</p></li>
+</ul>
+
+<p>There are already several R packages based on the htmlwidgets framework.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>R packages based on htmlwidgets</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <ul class = "build incremental">
+<li><strong>dygraphs</strong> for time series plots</li>
+<li><strong>leaflet</strong> for geo-spatial mapping</li>
+<li><strong>MetricsGraphics</strong> - D3 scatterplots, line charts, and histograms</li>
+<li><strong>networkD3</strong> - D3 network graphs </li>
+<li><strong>d3heatmap</strong> - interactive heatmaps with D3</li>
+<li><strong>DT</strong> - HTML tables with filtering, pagination, sorting</li>
+<li><strong>threejs</strong> - 3D scatterplot and 3D globe</li>
+<li><strong>DiagrammeR</strong> - diagrams &amp; flowcharts using Graphviz &amp; Mermaid</li>
+<li><strong>sparkline</strong> - small inline charts</li>
+</ul>
+
+<p>More examples: <a href="http://www.htmlwidgets.org/">http://www.htmlwidgets.org/</a></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <iframe src="d4.html"> </iframe>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>A dygraph tool in action</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="d1.html" > </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>R code for the previous plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">fcast1 &lt;- predict(HoltWinters(ldeaths), n.ahead = 36)
+fcast2 &lt;- predict(HoltWinters(ldeaths,alpha=0.1), n.ahead = 36)
+fcast3 &lt;- predict(HoltWinters(ldeaths,alpha=0.9), n.ahead = 36)
+fcast4 &lt;- predict(HoltWinters(ldeaths,alpha=0.1,beta=0.1), n.ahead = 36)
+fcast5 &lt;- predict(HoltWinters(ldeaths,gamma=FALSE), n.ahead = 36)
+fcast6 &lt;- forecast::forecast(forecast::auto.arima(ldeaths), h = 36)$mean
+ts &lt;- cbind(ldeaths,fcast1,fcast2,fcast3,fcast4,fcast5,fcast6)
+
+dygraph(ts, &quot;Deaths from Lung Disease (UK)&quot;) %&gt;%
+  dySeries(&quot;ldeaths&quot;, label = &quot;Deaths&quot;) %&gt;%
+  dyLegend(show = &quot;onmouseover&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>A threejs tool in action (load vs temp vs rhum)</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="d5.html" > </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>R code for the previous plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">HUM&lt;-round(M$HMAX,2);TEMP&lt;-round(M$MAX,2);LOAD&lt;-round(M$Load,2)
+
+pal &lt;- leaflet::colorQuantile(&quot;YlOrRd&quot;, NULL, n = 9)
+
+scatterplot3js(x=HUM,y=TEMP,z=LOAD, color=pal(TEMP),
+               labels=sprintf(&quot;HUM=%.2f, TEMP=%.2f, LOAD=%.2f, DATE=%s&quot;,
+                              HUM,TEMP,LOAD,M$Date), renderer=&quot;canvas&quot;,
+               size = LOAD/30,num.ticks = c(6, 6, 6),
+               x.ticklabs=paste(seq(min(HUM),max(HUM),length.out=6),&quot;%&quot;),
+                y.ticklabs=paste(seq(max(TEMP),min(TEMP),length.out=6),&quot;C&quot;),
+                z.ticklabs=paste(seq(min(LOAD),max(LOAD),length.out=6),&quot;MW&quot;),
+               signif = 6,bg=&quot;#fffaf0&quot;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>A leaflet tool in action (numer of R users by suburb)</h2>
+  </hgroup>
+  <article data-timings="">
+    <iframe src="d6.html" > </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>R code for the previous plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">tmp &lt;- tempdir();file &lt;- &quot;walocalitypolygon.zip&quot;;unzip(file, exdir = tmp)
+wa &lt;- readOGR(dsn = tmp, layer = &quot;WA Locality Polygon&quot;, encoding = &quot;UTF-8&quot;)
+wa@data$num&lt;-sample.int(100L,nrow(wa@data), TRUE)
+
+pal &lt;- colorQuantile(&quot;YlGn&quot;, NULL, n = 10)
+state_popup &lt;- paste0(&quot;&lt;strong&gt;LOC_PID: &lt;/strong&gt;&quot;, wa$LOC_PID, 
+        &quot;&lt;br&gt;&lt;strong&gt;Suburb/Locality: &lt;/strong&gt;&quot;, wa$WA_LOCAL_2,
+        &quot;&lt;br&gt;&lt;strong&gt;Numer of R uses :) &lt;/strong&gt;&quot;, wa$num)
+
+mb_tiles &lt;- &quot;http://a.tiles.mapbox.com/v3/kwalkertcu.l1fc0hab/{z}/{x}/{y}.png&quot;
+mb_attribution &lt;- &#39;Mapbox &lt;a href=&quot;http://mapbox.com/about/maps&quot; 
+target=&quot;_blank&quot;&gt;Terms &amp;amp; Feedback&lt;/a&gt;&#39;
+
+leaflet(data =wa) %&gt;% addTiles(urlTemplate = mb_tiles,  
+  attribution = mb_attribution) %&gt;% addPolygons(fillColor = ~pal(num), 
+  fillOpacity = 0.8, color = &quot;#BDBDC3&quot;, weight = 1, popup = state_popup)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2><div class="alert alert-info">Technology 2: rCharts </div></h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>rCharts</strong> is an R package to create, customize and publish interactive 
+JavaScript visualizations from R, using a familiar lattice style plotting 
+interface. It aims to</p>
+
+<ul>
+<li>make the process of creating, customizing and sharing interactive visualizations easy</li>
+<li>access the power of many different JavaScript libraries, each with its own strengths</li>
+<li>make sensible conventions like using hPlot() function for the Highcharts library, 
+mPlot() function for the Morris.js etc.</li>
+<li>be easily embeddable into Shiny apps, rmarkdown docs, HTML5 slides etc.</li>
+</ul>
+
+<p><strong>rCharts</strong> builds on earlier projects like  rHighcharts, rVega,  rNVD3 and 
+incorporates many other names that a good web developer would  be familiar with.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>JavaScript libraries behind R package rCharts</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <ul class = "build incremental">
+<li><strong>jquery.dataTables.js</strong> - Table plug-in for jQuery JavaScript library</li>
+<li><strong>d3.js</strong> - JavaScript library for Data-Driven Documents</li>
+<li><strong>dimple.js</strong> - a simple charting API for d3 data visualisations</li>
+<li><strong>highcharts.js</strong> - easy interactive charts for web projects</li>
+<li><strong>leaflet.js</strong> - for mobile-friendly interactive maps</li>
+<li><strong>morris.js</strong> - pretty time-series line graphs</li>
+<li><strong>raphael.js</strong> - simplifies work with vector graphics on the web</li>
+</ul>
+
+<p>More details and examples: <a href="http://rcharts.io/">http://rcharts.io/</a></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul class = "build incremental">
+<li><strong>nv.d3.js</strong> - re-usable charts for d3.js</li>
+<li><strong>polychart.js</strong> - combines data, layers, guides and interactions to create charts </li>
+<li><strong>rickshaw.js</strong> - JavaScript toolkit for creating interactive real-time graphs</li>
+<li><strong>timeline.js</strong> - Beautifully crafted timelines that are easy and intuitive to use.</li>
+<li><strong>uvcharts.js</strong> - charting library based on d3.js</li>
+<li><strong>vega.js</strong> - interactive views using either HTML5 Canvas or SVG.</li>
+<li><strong>xcharts.js</strong> - xCharts is a D3-based library for building custom charts and graphs.</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>An nvd3 tool in action</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><link rel='stylesheet' href=C:/Users/Andrey/Documents/R/win-library/3.2/rCharts/libraries/nvd3/css/nv.d3.css>
+<link rel='stylesheet' href=C:/Users/Andrey/Documents/R/win-library/3.2/rCharts/libraries/nvd3/css/rNVD3.css></p>
+
+<script type='text/javascript' src=C:/Users/Andrey/Documents/R/win-library/3.2/rCharts/libraries/nvd3/js/jquery-1.8.2.min.js></script>
+
+<script type='text/javascript' src=C:/Users/Andrey/Documents/R/win-library/3.2/rCharts/libraries/nvd3/js/d3.v3.min.js></script>
+
+<script type='text/javascript' src=C:/Users/Andrey/Documents/R/win-library/3.2/rCharts/libraries/nvd3/js/nv.d3.min-new.js></script>
+
+<script type='text/javascript' src=C:/Users/Andrey/Documents/R/win-library/3.2/rCharts/libraries/nvd3/js/fisheye.js></script> 
+
+<p><style>
+  .rChart {
+    display: block;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 800px;
+    height: 400px;
+  }<br>
+  </style></p>
+
+<div id = 'chartb5c8f56d8c' class = 'rChart nvd3'></div>
+
+<script type='text/javascript'>
+ $(document).ready(function(){
+      drawchartb5c8f56d8c()
+    });
+    function drawchartb5c8f56d8c(){  
+      var opts = {
+ "dom": "chartb5c8f56d8c",
+"width":    800,
+"height":    400,
+"x": "Sepal.Width",
+"y": "Sepal.Length",
+"group": "Species",
+"type": "scatterChart",
+"id": "chartb5c8f56d8c" 
+},
+        data = [
+ {
+ "Sepal.Length":            5.1,
+"Sepal.Width":            3.5,
+"Petal.Length":            1.4,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.9,
+"Sepal.Width":              3,
+"Petal.Length":            1.4,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.7,
+"Sepal.Width":            3.2,
+"Petal.Length":            1.3,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.6,
+"Sepal.Width":            3.1,
+"Petal.Length":            1.5,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":              5,
+"Sepal.Width":            3.6,
+"Petal.Length":            1.4,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.4,
+"Sepal.Width":            3.9,
+"Petal.Length":            1.7,
+"Petal.Width":            0.4,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.6,
+"Sepal.Width":            3.4,
+"Petal.Length":            1.4,
+"Petal.Width":            0.3,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":              5,
+"Sepal.Width":            3.4,
+"Petal.Length":            1.5,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.4,
+"Sepal.Width":            2.9,
+"Petal.Length":            1.4,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.9,
+"Sepal.Width":            3.1,
+"Petal.Length":            1.5,
+"Petal.Width":            0.1,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.4,
+"Sepal.Width":            3.7,
+"Petal.Length":            1.5,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.8,
+"Sepal.Width":            3.4,
+"Petal.Length":            1.6,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.8,
+"Sepal.Width":              3,
+"Petal.Length":            1.4,
+"Petal.Width":            0.1,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.3,
+"Sepal.Width":              3,
+"Petal.Length":            1.1,
+"Petal.Width":            0.1,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.8,
+"Sepal.Width":              4,
+"Petal.Length":            1.2,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.7,
+"Sepal.Width":            4.4,
+"Petal.Length":            1.5,
+"Petal.Width":            0.4,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.4,
+"Sepal.Width":            3.9,
+"Petal.Length":            1.3,
+"Petal.Width":            0.4,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.1,
+"Sepal.Width":            3.5,
+"Petal.Length":            1.4,
+"Petal.Width":            0.3,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.7,
+"Sepal.Width":            3.8,
+"Petal.Length":            1.7,
+"Petal.Width":            0.3,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.1,
+"Sepal.Width":            3.8,
+"Petal.Length":            1.5,
+"Petal.Width":            0.3,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.4,
+"Sepal.Width":            3.4,
+"Petal.Length":            1.7,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.1,
+"Sepal.Width":            3.7,
+"Petal.Length":            1.5,
+"Petal.Width":            0.4,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.6,
+"Sepal.Width":            3.6,
+"Petal.Length":              1,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.1,
+"Sepal.Width":            3.3,
+"Petal.Length":            1.7,
+"Petal.Width":            0.5,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.8,
+"Sepal.Width":            3.4,
+"Petal.Length":            1.9,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":              5,
+"Sepal.Width":              3,
+"Petal.Length":            1.6,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":              5,
+"Sepal.Width":            3.4,
+"Petal.Length":            1.6,
+"Petal.Width":            0.4,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.2,
+"Sepal.Width":            3.5,
+"Petal.Length":            1.5,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.2,
+"Sepal.Width":            3.4,
+"Petal.Length":            1.4,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.7,
+"Sepal.Width":            3.2,
+"Petal.Length":            1.6,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.8,
+"Sepal.Width":            3.1,
+"Petal.Length":            1.6,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.4,
+"Sepal.Width":            3.4,
+"Petal.Length":            1.5,
+"Petal.Width":            0.4,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.2,
+"Sepal.Width":            4.1,
+"Petal.Length":            1.5,
+"Petal.Width":            0.1,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.5,
+"Sepal.Width":            4.2,
+"Petal.Length":            1.4,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.9,
+"Sepal.Width":            3.1,
+"Petal.Length":            1.5,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":              5,
+"Sepal.Width":            3.2,
+"Petal.Length":            1.2,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.5,
+"Sepal.Width":            3.5,
+"Petal.Length":            1.3,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.9,
+"Sepal.Width":            3.6,
+"Petal.Length":            1.4,
+"Petal.Width":            0.1,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.4,
+"Sepal.Width":              3,
+"Petal.Length":            1.3,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.1,
+"Sepal.Width":            3.4,
+"Petal.Length":            1.5,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":              5,
+"Sepal.Width":            3.5,
+"Petal.Length":            1.3,
+"Petal.Width":            0.3,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.5,
+"Sepal.Width":            2.3,
+"Petal.Length":            1.3,
+"Petal.Width":            0.3,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.4,
+"Sepal.Width":            3.2,
+"Petal.Length":            1.3,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":              5,
+"Sepal.Width":            3.5,
+"Petal.Length":            1.6,
+"Petal.Width":            0.6,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.1,
+"Sepal.Width":            3.8,
+"Petal.Length":            1.9,
+"Petal.Width":            0.4,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.8,
+"Sepal.Width":              3,
+"Petal.Length":            1.4,
+"Petal.Width":            0.3,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.1,
+"Sepal.Width":            3.8,
+"Petal.Length":            1.6,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            4.6,
+"Sepal.Width":            3.2,
+"Petal.Length":            1.4,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":            5.3,
+"Sepal.Width":            3.7,
+"Petal.Length":            1.5,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":              5,
+"Sepal.Width":            3.3,
+"Petal.Length":            1.4,
+"Petal.Width":            0.2,
+"Species": "setosa" 
+},
+{
+ "Sepal.Length":              7,
+"Sepal.Width":            3.2,
+"Petal.Length":            4.7,
+"Petal.Width":            1.4,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.4,
+"Sepal.Width":            3.2,
+"Petal.Length":            4.5,
+"Petal.Width":            1.5,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.9,
+"Sepal.Width":            3.1,
+"Petal.Length":            4.9,
+"Petal.Width":            1.5,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.5,
+"Sepal.Width":            2.3,
+"Petal.Length":              4,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.5,
+"Sepal.Width":            2.8,
+"Petal.Length":            4.6,
+"Petal.Width":            1.5,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.7,
+"Sepal.Width":            2.8,
+"Petal.Length":            4.5,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.3,
+"Sepal.Width":            3.3,
+"Petal.Length":            4.7,
+"Petal.Width":            1.6,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            4.9,
+"Sepal.Width":            2.4,
+"Petal.Length":            3.3,
+"Petal.Width":              1,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.6,
+"Sepal.Width":            2.9,
+"Petal.Length":            4.6,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.2,
+"Sepal.Width":            2.7,
+"Petal.Length":            3.9,
+"Petal.Width":            1.4,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":              5,
+"Sepal.Width":              2,
+"Petal.Length":            3.5,
+"Petal.Width":              1,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.9,
+"Sepal.Width":              3,
+"Petal.Length":            4.2,
+"Petal.Width":            1.5,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":              6,
+"Sepal.Width":            2.2,
+"Petal.Length":              4,
+"Petal.Width":              1,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.1,
+"Sepal.Width":            2.9,
+"Petal.Length":            4.7,
+"Petal.Width":            1.4,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.6,
+"Sepal.Width":            2.9,
+"Petal.Length":            3.6,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.7,
+"Sepal.Width":            3.1,
+"Petal.Length":            4.4,
+"Petal.Width":            1.4,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.6,
+"Sepal.Width":              3,
+"Petal.Length":            4.5,
+"Petal.Width":            1.5,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.8,
+"Sepal.Width":            2.7,
+"Petal.Length":            4.1,
+"Petal.Width":              1,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.2,
+"Sepal.Width":            2.2,
+"Petal.Length":            4.5,
+"Petal.Width":            1.5,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.6,
+"Sepal.Width":            2.5,
+"Petal.Length":            3.9,
+"Petal.Width":            1.1,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.9,
+"Sepal.Width":            3.2,
+"Petal.Length":            4.8,
+"Petal.Width":            1.8,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.1,
+"Sepal.Width":            2.8,
+"Petal.Length":              4,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.3,
+"Sepal.Width":            2.5,
+"Petal.Length":            4.9,
+"Petal.Width":            1.5,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.1,
+"Sepal.Width":            2.8,
+"Petal.Length":            4.7,
+"Petal.Width":            1.2,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.4,
+"Sepal.Width":            2.9,
+"Petal.Length":            4.3,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.6,
+"Sepal.Width":              3,
+"Petal.Length":            4.4,
+"Petal.Width":            1.4,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.8,
+"Sepal.Width":            2.8,
+"Petal.Length":            4.8,
+"Petal.Width":            1.4,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.7,
+"Sepal.Width":              3,
+"Petal.Length":              5,
+"Petal.Width":            1.7,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":              6,
+"Sepal.Width":            2.9,
+"Petal.Length":            4.5,
+"Petal.Width":            1.5,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.7,
+"Sepal.Width":            2.6,
+"Petal.Length":            3.5,
+"Petal.Width":              1,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.5,
+"Sepal.Width":            2.4,
+"Petal.Length":            3.8,
+"Petal.Width":            1.1,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.5,
+"Sepal.Width":            2.4,
+"Petal.Length":            3.7,
+"Petal.Width":              1,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.8,
+"Sepal.Width":            2.7,
+"Petal.Length":            3.9,
+"Petal.Width":            1.2,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":              6,
+"Sepal.Width":            2.7,
+"Petal.Length":            5.1,
+"Petal.Width":            1.6,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.4,
+"Sepal.Width":              3,
+"Petal.Length":            4.5,
+"Petal.Width":            1.5,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":              6,
+"Sepal.Width":            3.4,
+"Petal.Length":            4.5,
+"Petal.Width":            1.6,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.7,
+"Sepal.Width":            3.1,
+"Petal.Length":            4.7,
+"Petal.Width":            1.5,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.3,
+"Sepal.Width":            2.3,
+"Petal.Length":            4.4,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.6,
+"Sepal.Width":              3,
+"Petal.Length":            4.1,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.5,
+"Sepal.Width":            2.5,
+"Petal.Length":              4,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.5,
+"Sepal.Width":            2.6,
+"Petal.Length":            4.4,
+"Petal.Width":            1.2,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.1,
+"Sepal.Width":              3,
+"Petal.Length":            4.6,
+"Petal.Width":            1.4,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.8,
+"Sepal.Width":            2.6,
+"Petal.Length":              4,
+"Petal.Width":            1.2,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":              5,
+"Sepal.Width":            2.3,
+"Petal.Length":            3.3,
+"Petal.Width":              1,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.6,
+"Sepal.Width":            2.7,
+"Petal.Length":            4.2,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.7,
+"Sepal.Width":              3,
+"Petal.Length":            4.2,
+"Petal.Width":            1.2,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.7,
+"Sepal.Width":            2.9,
+"Petal.Length":            4.2,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.2,
+"Sepal.Width":            2.9,
+"Petal.Length":            4.3,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.1,
+"Sepal.Width":            2.5,
+"Petal.Length":              3,
+"Petal.Width":            1.1,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            5.7,
+"Sepal.Width":            2.8,
+"Petal.Length":            4.1,
+"Petal.Width":            1.3,
+"Species": "versicolor" 
+},
+{
+ "Sepal.Length":            6.3,
+"Sepal.Width":            3.3,
+"Petal.Length":              6,
+"Petal.Width":            2.5,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            5.8,
+"Sepal.Width":            2.7,
+"Petal.Length":            5.1,
+"Petal.Width":            1.9,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.1,
+"Sepal.Width":              3,
+"Petal.Length":            5.9,
+"Petal.Width":            2.1,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.3,
+"Sepal.Width":            2.9,
+"Petal.Length":            5.6,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.5,
+"Sepal.Width":              3,
+"Petal.Length":            5.8,
+"Petal.Width":            2.2,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.6,
+"Sepal.Width":              3,
+"Petal.Length":            6.6,
+"Petal.Width":            2.1,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            4.9,
+"Sepal.Width":            2.5,
+"Petal.Length":            4.5,
+"Petal.Width":            1.7,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.3,
+"Sepal.Width":            2.9,
+"Petal.Length":            6.3,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.7,
+"Sepal.Width":            2.5,
+"Petal.Length":            5.8,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.2,
+"Sepal.Width":            3.6,
+"Petal.Length":            6.1,
+"Petal.Width":            2.5,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.5,
+"Sepal.Width":            3.2,
+"Petal.Length":            5.1,
+"Petal.Width":              2,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.4,
+"Sepal.Width":            2.7,
+"Petal.Length":            5.3,
+"Petal.Width":            1.9,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.8,
+"Sepal.Width":              3,
+"Petal.Length":            5.5,
+"Petal.Width":            2.1,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            5.7,
+"Sepal.Width":            2.5,
+"Petal.Length":              5,
+"Petal.Width":              2,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            5.8,
+"Sepal.Width":            2.8,
+"Petal.Length":            5.1,
+"Petal.Width":            2.4,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.4,
+"Sepal.Width":            3.2,
+"Petal.Length":            5.3,
+"Petal.Width":            2.3,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.5,
+"Sepal.Width":              3,
+"Petal.Length":            5.5,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.7,
+"Sepal.Width":            3.8,
+"Petal.Length":            6.7,
+"Petal.Width":            2.2,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.7,
+"Sepal.Width":            2.6,
+"Petal.Length":            6.9,
+"Petal.Width":            2.3,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":              6,
+"Sepal.Width":            2.2,
+"Petal.Length":              5,
+"Petal.Width":            1.5,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.9,
+"Sepal.Width":            3.2,
+"Petal.Length":            5.7,
+"Petal.Width":            2.3,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            5.6,
+"Sepal.Width":            2.8,
+"Petal.Length":            4.9,
+"Petal.Width":              2,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.7,
+"Sepal.Width":            2.8,
+"Petal.Length":            6.7,
+"Petal.Width":              2,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.3,
+"Sepal.Width":            2.7,
+"Petal.Length":            4.9,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.7,
+"Sepal.Width":            3.3,
+"Petal.Length":            5.7,
+"Petal.Width":            2.1,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.2,
+"Sepal.Width":            3.2,
+"Petal.Length":              6,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.2,
+"Sepal.Width":            2.8,
+"Petal.Length":            4.8,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.1,
+"Sepal.Width":              3,
+"Petal.Length":            4.9,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.4,
+"Sepal.Width":            2.8,
+"Petal.Length":            5.6,
+"Petal.Width":            2.1,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.2,
+"Sepal.Width":              3,
+"Petal.Length":            5.8,
+"Petal.Width":            1.6,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.4,
+"Sepal.Width":            2.8,
+"Petal.Length":            6.1,
+"Petal.Width":            1.9,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.9,
+"Sepal.Width":            3.8,
+"Petal.Length":            6.4,
+"Petal.Width":              2,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.4,
+"Sepal.Width":            2.8,
+"Petal.Length":            5.6,
+"Petal.Width":            2.2,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.3,
+"Sepal.Width":            2.8,
+"Petal.Length":            5.1,
+"Petal.Width":            1.5,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.1,
+"Sepal.Width":            2.6,
+"Petal.Length":            5.6,
+"Petal.Width":            1.4,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            7.7,
+"Sepal.Width":              3,
+"Petal.Length":            6.1,
+"Petal.Width":            2.3,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.3,
+"Sepal.Width":            3.4,
+"Petal.Length":            5.6,
+"Petal.Width":            2.4,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.4,
+"Sepal.Width":            3.1,
+"Petal.Length":            5.5,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":              6,
+"Sepal.Width":              3,
+"Petal.Length":            4.8,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.9,
+"Sepal.Width":            3.1,
+"Petal.Length":            5.4,
+"Petal.Width":            2.1,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.7,
+"Sepal.Width":            3.1,
+"Petal.Length":            5.6,
+"Petal.Width":            2.4,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.9,
+"Sepal.Width":            3.1,
+"Petal.Length":            5.1,
+"Petal.Width":            2.3,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            5.8,
+"Sepal.Width":            2.7,
+"Petal.Length":            5.1,
+"Petal.Width":            1.9,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.8,
+"Sepal.Width":            3.2,
+"Petal.Length":            5.9,
+"Petal.Width":            2.3,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.7,
+"Sepal.Width":            3.3,
+"Petal.Length":            5.7,
+"Petal.Width":            2.5,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.7,
+"Sepal.Width":              3,
+"Petal.Length":            5.2,
+"Petal.Width":            2.3,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.3,
+"Sepal.Width":            2.5,
+"Petal.Length":              5,
+"Petal.Width":            1.9,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.5,
+"Sepal.Width":              3,
+"Petal.Length":            5.2,
+"Petal.Width":              2,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            6.2,
+"Sepal.Width":            3.4,
+"Petal.Length":            5.4,
+"Petal.Width":            2.3,
+"Species": "virginica" 
+},
+{
+ "Sepal.Length":            5.9,
+"Sepal.Width":              3,
+"Petal.Length":            5.1,
+"Petal.Width":            1.8,
+"Species": "virginica" 
+} 
+]
+  
+      if(!(opts.type==="pieChart" || opts.type==="sparklinePlus" || opts.type==="bulletChart")) {
+        var data = d3.nest()
+          .key(function(d){
+            //return opts.group === undefined ? 'main' : d[opts.group]
+            //instead of main would think a better default is opts.x
+            return opts.group === undefined ? opts.y : d[opts.group];
+          })
+          .entries(data);
+      }
+      
+      if (opts.disabled != undefined){
+        data.map(function(d, i){
+          d.disabled = opts.disabled[i]
+        })
+      }
+      
+      nv.addGraph(function() {
+        var chart = nv.models[opts.type]()
+          .width(opts.width)
+          .height(opts.height)
+          
+        if (opts.type != "bulletChart"){
+          chart
+            .x(function(d) { return d[opts.x] })
+            .y(function(d) { return d[opts.y] })
+        }
+          
+         
+        
+          
+        
+
+        
+        
+        
+      
+       d3.select("#" + opts.id)
+        .append('svg')
+        .datum(data)
+        .transition().duration(500)
+        .call(chart);
+
+       nv.utils.windowResize(chart.update);
+       return chart;
+      });
+    };
+</script>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>R code for the previous plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">p2 &lt;- nvd3Plot(Sepal.Length ~ Sepal.Width, group = &#39;Species&#39;, 
+        data = iris, type = &#39;scatterChart&#39;)
+p2$show(&#39;inline&#39;,include_assets = TRUE)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>A Highcharts tool in action</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><iframe src=' assets/fig/unnamed-chunk-13-1.html ' scrolling='no' frameBorder='0' seamless class='rChart nvd3 ' id=iframe- chartb5c6e306d53 ></iframe> <style>iframe.rChart{ width: 100%; height: 400px;}</style></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>R code for the previous plot</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">x &lt;- data.frame(USPersonalExpenditure)
+colnames(x) &lt;- substr(colnames(x), 2, 5)
+x$industry&lt;-rownames(x)
+xx &lt;- reshape2::melt(x,id=&quot;industry&quot;)
+nPlot(value~variable, group = &#39;industry&#39;, data = xx, type = &#39;lineChart&#39;)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-23" style="background:;">
+  <hgroup>
+    <h2><div class="alert alert-warning">Technology 3: googleVis </div></h2>
+  </hgroup>
+  <article data-timings="">
+    <p>R package <strong>googleVis</strong> is the interface to <strong>Google Charts API</strong> for creating interactive charts based on data frames (<a href="https://developers.google.com/chart/interactive/docs/gallery">see examples</a>). Google Chart tools are powerful, simple to use, and free. Note some facts:</p>
+
+<ul>
+<li>data are visualised using a large number of ready-to-use chart types, from simple line charts to complex hierarchical tree maps </li>
+<li>charts are rendered using Flash/HTML5/SVG technology to provide cross-browser compatibility and cross platform portability</li>
+<li><strong>Flash based</strong> (Motion Charts, Annotated Time Lines, Geo Maps) and 
+<strong>HMTL5/SVG based</strong> (Maps, Geo Charts, Intensity Maps, Tables, Gauges, Tree Maps, Line-, Bar-, Column-, Area- and Combo Charts, Scatter-, Bubble-,      Candlestick-, Pie- and Org Charts)</li>
+<li><a href="http://cran.r-project.org/web/packages/googleVis/index.html">five vignettes</a> have been written on how to use googleVis </li>
+<li><a href="http://mages.github.io/Introduction_to_googleVis/">a Slidify presentation</a> about the details and usage of googleVis is available on GitHub</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>gvisMotionChart() in action</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">plot(gvisMotionChart(Fruits, &quot;Fruit&quot;, &quot;Year&quot;, options = list(width = 600, height = 400)))
+</code></pre>
+
+<!-- MotionChart generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Thu Jun 25 02:13:55 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataMotionChartIDb5c7bd5399c () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "Apples",
+2008,
+"West",
+98,
+78,
+20,
+"2008-12-31" 
+],
+[
+ "Apples",
+2009,
+"West",
+111,
+79,
+32,
+"2009-12-31" 
+],
+[
+ "Apples",
+2010,
+"West",
+89,
+76,
+13,
+"2010-12-31" 
+],
+[
+ "Oranges",
+2008,
+"East",
+96,
+81,
+15,
+"2008-12-31" 
+],
+[
+ "Bananas",
+2008,
+"East",
+85,
+76,
+9,
+"2008-12-31" 
+],
+[
+ "Oranges",
+2009,
+"East",
+93,
+80,
+13,
+"2009-12-31" 
+],
+[
+ "Bananas",
+2009,
+"East",
+94,
+78,
+16,
+"2009-12-31" 
+],
+[
+ "Oranges",
+2010,
+"East",
+98,
+91,
+7,
+"2010-12-31" 
+],
+[
+ "Bananas",
+2010,
+"East",
+81,
+71,
+10,
+"2010-12-31" 
+] 
+];
+data.addColumn('string','Fruit');
+data.addColumn('number','Year');
+data.addColumn('string','Location');
+data.addColumn('number','Sales');
+data.addColumn('number','Expenses');
+data.addColumn('number','Profit');
+data.addColumn('string','Date');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartMotionChartIDb5c7bd5399c() {
+var data = gvisDataMotionChartIDb5c7bd5399c();
+var options = {};
+options["width"] =    600;
+options["height"] =    400;
+options["state"] = "";
+
+    var chart = new google.visualization.MotionChart(
+    document.getElementById('MotionChartIDb5c7bd5399c')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "motionchart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartMotionChartIDb5c7bd5399c);
+})();
+function displayChartMotionChartIDb5c7bd5399c() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMotionChartIDb5c7bd5399c"></script>
+ 
+
+<!-- divChart -->
+
+<div id="MotionChartIDb5c7bd5399c" 
+  style="width: 600; height: 400;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>gvisPieChart() in action</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- PieChart generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Thu Jun 25 02:13:55 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataPieChartIDb5c556b1d81 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "New York",
+200 
+],
+[
+ "Boston",
+300 
+],
+[
+ "Miami",
+400 
+],
+[
+ "Chicago",
+500 
+],
+[
+ "Los Angeles",
+600 
+],
+[
+ "Houston",
+700 
+] 
+];
+data.addColumn('string','City');
+data.addColumn('number','Popularity');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartPieChartIDb5c556b1d81() {
+var data = gvisDataPieChartIDb5c556b1d81();
+var options = {};
+options["allowHtml"] = true;
+options["width"] =    400;
+options["height"] =    400;
+
+    chartPieChartIDb5c556b1d81 = new google.visualization.ChartWrapper({
+    dataTable: data,       
+    chartType: 'PieChart',
+    containerId: 'PieChartIDb5c556b1d81',
+    options: options
+    });
+    chartPieChartIDb5c556b1d81.draw();
+    
+
+}
+
+  function openEditorPieChartIDb5c556b1d81() {
+  var editor = new google.visualization.ChartEditor();
+  google.visualization.events.addListener(editor, 'ok',
+  function() { 
+  chartPieChartIDb5c556b1d81 = editor.getChartWrapper();  
+  chartPieChartIDb5c556b1d81.draw(document.getElementById('PieChartIDb5c556b1d81')); 
+  }); 
+  editor.openDialog(chartPieChartIDb5c556b1d81);
+  }
+    
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "charteditor";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartPieChartIDb5c556b1d81);
+})();
+function displayChartPieChartIDb5c556b1d81() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartPieChartIDb5c556b1d81"></script>
+ 
+
+<!-- divChart -->
+
+<p><input type='button' onclick='openEditorPieChartIDb5c556b1d81()' value='please edit me into a barchart'/>  </p>
+
+<div id="PieChartIDb5c556b1d81" 
+  style="width: 400; height: 400;">
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>gvisGeoChart() in action</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <!-- GeoChart generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Thu Jun 25 02:13:55 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataGeoChartIDb5c11b1182 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ "AU-WA",
+323 
+],
+[
+ "AU-VIC",
+425 
+],
+[
+ "AU-NT",
+154 
+],
+[
+ "AU-NSW",
+486 
+],
+[
+ "AU-SA",
+201 
+],
+[
+ "AU-QLD",
+195 
+],
+[
+ "AU-TAS",
+87 
+],
+[
+ "NZ",
+123 
+] 
+];
+data.addColumn('string','state');
+data.addColumn('number','R_users');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartGeoChartIDb5c11b1182() {
+var data = gvisDataGeoChartIDb5c11b1182();
+var options = {};
+options["width"] =    500;
+options["height"] =    400;
+options["region"] = "AU";
+options["dataMode"] = "regions";
+options["resolution"] = "provinces";
+
+    var chart = new google.visualization.GeoChart(
+    document.getElementById('GeoChartIDb5c11b1182')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "geochart";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartGeoChartIDb5c11b1182);
+})();
+function displayChartGeoChartIDb5c11b1182() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartGeoChartIDb5c11b1182"></script>
+ 
+
+<!-- divChart -->
+
+<div id="GeoChartIDb5c11b1182" 
+  style="width: 500; height: 400;">
+</div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <pre><code class="r">df=data.frame(state=c(&quot;AU-WA&quot;,&quot;AU-VIC&quot;, 
+&quot;AU-NT&quot;, &quot;AU-NSW&quot;, &quot;AU-SA&quot;,&quot;AU-QLD&quot;,
+&quot;AU-TAS&quot;,&quot;NZ&quot;), 
+R_users=c(323,425,154,486,201,195,87,123))
+Geo &lt;- gvisGeoChart(df, 
+locationvar=&quot;state&quot;,colorvar=c(&quot;R_users&quot;),
+options=list(region=&quot;AU&quot;,
+dataMode=&quot;regions&quot;,resolution=&quot;provinces&quot;,
+width=500, height=400))
+plot(Geo)
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2><div class="alert alert-danger">Technology 4: plotly </div></h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Plotly</strong> is an online data visualization tool, with scientific graphing libraries available for Python, R, MATLAB, Perl, Julia and other languages. 
+Plotly was built using Python and the Django framework, with a front end using JavaScript and the visualization library D3.js, HTML and CSS. 
+Files are hosted on Amazon S3. </p>
+
+<p>With <strong>plottly</strong>,</p>
+
+<ul>
+<li>all plots are online and editable by you and your collaborators</li>
+<li>you can analyse and visualize data, together </li>
+<li>you can publish your ggplot2 figures to the web with one line</li>
+<li>your Shiny application would have plots one can zoom, pan and more</li>
+</ul>
+
+<p>Details and examples: <a href="https://plot.ly/r/user-guide/">https://plot.ly/r/user-guide/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Too many static ggplots suggest a Shiny app</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="topten_sys_201506.svg" height="400" width="850" onerror="this.src='topten_sys_201506.png'"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Adding some interactivity is another good idea</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><center><iframe scrolling='no' seamless='seamless' style='border:none' src='https://plot.ly/~andrekos/30/800/1200' width='800' height='1200'></iframe><center></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>The end. Take-home messages</h2>
+  </hgroup>
+  <article data-timings="">
+    <div class="alert alert-info alert-dismissable">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3> htmlwidgets | rCharts | googleVis | plotly - all are good but the first seems best.</h3> 
+</div>
+
+<div class="alert alert-success alert-dismissable">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3>Start your own exploration for htmlwidgets and associated packages.</h3> 
+</div>
+
+<div class="alert alert-success alert-dismissable">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3>Try them in various environments, e.g. web apps, rmd docs, HTML5 presentations.</h3> 
+</div>
+
+<div class="alert alert-warning alert-dismissable">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3>Develop your own widget, either to learn by doing or start a really useful project.</h3> 
+</div>
+
+<div class="alert alert-warning alert-dismissable">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<h3>An R package for animated heatmaps for weather data with turf.js sounds cool. </h3> 
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-31" style="background:;">
+  <hgroup>
+    <h2>What is the best theme for the 3rd WARG event?</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div class="quiz quiz-single well ">
+  <p>I am sure you will be able to deductively conclude that the correct answer is ...</p>
+
+<ol>
+<li><p>Dashboards in R with Shiny &amp; plotly</p></li>
+<li><p>Exploring Hadley&#39;s recent R packages (readr, readxl, rvest, etc)</p></li>
+<li><p>Building R packages in the modern way (with RStudio and roxigen2)</p></li>
+<li><p><em>Twitter&#39;s AnomalyDetection vs. Hyndman&#39;s anomalous R packages</em></p></li>
+<li><p>S4 vs. S3, object.size(), gc() and other advanced topics</p></li>
+<li><p>Maps and spatial data analysis using R</p></li>
+</ol>
+
+  <button class="quiz-submit btn btn-primary">Submit</button>
+  <button class="quiz-toggle-hint btn btn-info">Show Hint</button>
+  <button class="quiz-show-answer btn btn-success">Show Answer</button>
+  <button class="quiz-clear btn btn-danger">Clear</button>
+  
+  <div class="quiz-hint">
+  <p>Well, right now, I personally would like to learn more about 2, 4 and maybe 6, or even 1.</p>
+
+</div>
+<div class="quiz-explanation">
+  <p>That&#39;s right! I love time series, especially if it&#39;s about <a href="https://blog.twitter.com/2015/introducing-practical-and-robust-anomaly-detection-in-a-time-series">detecting anomalies</a>.</p>
+
+</div>
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Agenda'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='<strong>R</strong>'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='INTERACTIVE: <a href="#" rel="tooltip" data-original-title="Hi, I'm a Tooltip. I live in the title.">tooltipable</a>, clickable, transformable'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='INTERACTIVE: pan-zoomable aka zoom-panable'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='INTERACTIVE: info-legends and series highlighting'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='JavaScript libraries make it possible'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='D3.js - Data-Driven Documents'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Some of the key technologies'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='<div class="alert alert-success">Technology 1: Htmlwidgets </div>'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='R packages based on htmlwidgets'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='A dygraph tool in action'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='R code for the previous plot'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='A threejs tool in action (load vs temp vs rhum)'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='R code for the previous plot'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='A leaflet tool in action (numer of R users by suburb)'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='R code for the previous plot'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='<div class="alert alert-info">Technology 2: rCharts </div>'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='JavaScript libraries behind R package rCharts'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='An nvd3 tool in action'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='R code for the previous plot'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='A Highcharts tool in action'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='R code for the previous plot'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='<div class="alert alert-warning">Technology 3: googleVis </div>'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='gvisMotionChart() in action'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='gvisPieChart() in action'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='gvisGeoChart() in action'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='<div class="alert alert-danger">Technology 4: plotly </div>'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Too many static ggplots suggest a Shiny app'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Adding some interactivity is another good idea'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='The end. Take-home messages'>
+         30
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=31 title='What is the best theme for the 3rd WARG event?'>
+         31
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
