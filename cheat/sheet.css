@@ -1,0 +1,192 @@
+
+    navv a {
+	position: relative;
+	display: inline-block;
+	margin: 15px 15px;
+	outline: none;
+	color: orange;
+	text-decoration: none;
+	text-transform: none;
+	letter-spacing: 1px;
+	font-weight: 400;
+	text-shadow: 0 0 1px rgba(255,255,255,0.3);
+	font-size: 1.25em;
+        text-align: center;
+}
+
+navv a:hover,
+navv a:focus {
+	outline: none;
+}
+
+    
+.animated_link3 {
+  display: inline-block;
+    overflow: hidden;
+
+   vertical-align: top;
+
+    -webkit-perspective: 600px;
+       -moz-perspective: 600px;
+       -ms-perspective: 600px;
+       perspective: 600px;
+
+    -webkit-perspective-origin: 50% 50%;
+       -moz-perspective-origin: 50% 50%;
+       -ms-perspective-origin: 50% 50%;
+       perspective-origin: 50% 50%;
+}
+.animated_link3:hover {text-decoration:none;}
+
+.animated_link3 span {
+    display: block;
+    position: relative;
+    padding: 0 2px;
+  border-radius: 5px;
+
+    -webkit-transition: all 400ms ease;
+       -moz-transition: all 400ms ease;
+       -ms-transition: all 400ms ease;
+       transition: all 400ms ease;
+    
+    -webkit-transform-origin: 50% 0%;
+       -moz-transform-origin: 50% 0%;
+       -ms-transform-origin: 50% 0%;
+       transform-origin: 50% 0%;
+    
+    -webkit-transform-style: preserve-3d;
+       -moz-transform-style: preserve-3d;
+       -ms-transform-style: preserve-3d;
+       transform-style: preserve-3d;
+}
+.animated_link3:hover span {
+        background: #e0b31e;
+
+        -webkit-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+           -moz-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+           -ms-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+           transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+}
+
+.animated_link3 span:after {
+    content: attr(data-title);
+
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 2px;
+  border-radius: 5px;
+
+    color: yellow;
+    background: #131414;
+
+    -webkit-transform-origin: 50% 0%;
+       -moz-transform-origin: 50% 0%;
+       -ms-transform-origin: 50% 0%;
+       transform-origin: 50% 0%;
+
+    -webkit-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+       -moz-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+       -ms-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+       transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+}     
+
+
+     .tabs {
+  position: relative;
+  height: 48px;
+  background-color: #fff;
+  margin: 0 auto;
+  width: 100%;
+  white-space: nowrap; }
+  .tabs .tab {
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: 48px;
+    height: 48px;
+    padding: 0 20px;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    width: 15%; }
+    .tabs .tab a {
+      color: yellow;
+      display: block;
+      width: 100%;
+      height: 100%;
+      -webkit-transition: color .28s ease;
+      -moz-transition: color .28s ease;
+      -o-transition: color .28s ease;
+      -ms-transition: color .28s ease;
+      transition: color .28s ease; }
+      .tabs .tab a:hover {
+        color: orange; }
+    .tabs .tab.disabled a {
+      color: #bcbcbc;
+      cursor: default; }
+  .tabs .indicator {
+    position: absolute;
+    bottom: 3px;
+    height: 3px;
+    background-color: yellow;
+    will-change: left, right; }
+
+.tabs .tab {
+  padding: 0; 
+}
+     
+
+ html {
+       overflow-y: scroll;
+} 
+     
+.pp { display: inline-block; margin: auto;margin-left: 1em; }
+  
+
+
+#mtabs_container {
+    border-bottom: 1px solid #ccc;
+}
+#mtabs {
+    list-style: none;
+    padding: 5px 0 4px 0;
+    margin: 0 0 0 0px;
+    /* font: 0.75em arial; */
+}
+#mtabs li {
+    display: inline;
+}
+#mtabs li a {
+    border: 1px solid #ccc;
+    padding: 4px 6px;
+    text-decoration: none;
+    color:#000;
+    font-family: Artifika, serif; 
+    background-color: #eeeeee;
+    font-size:14px;
+    /*border-bottom: 1px solid #ccc;
+    outline: none;*/
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+#mtabs li a:hover {
+    background-color: #dddddd;
+    padding: 4px 6px;
+}
+#mtabs li.active a {
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    padding: 4px 6px 5px 6px;
+    /*border-bottom: none;*/
+}
+#mtabs li.active a:hover {
+    background-color: #eeeeee;
+    padding: 4px 6px 5px 6px;
+    /*border-bottom: none;*/
+}
+ 
+
