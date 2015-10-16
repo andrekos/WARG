@@ -58,9 +58,9 @@ developers of the package (two real guru's)
 
 - learning by doing is a great way to learn languages other than R (here html5, css3, js)
 
-- check out <span style='color:gold';>R newsfeeds</span> at <br> [andreykostenko.com.au/WARG/RNEWS](andreykostenko.com.au/WARG/RNEWS.html)
+- check out <span style='color:gold';>R newsfeeds</span> at <br> [andreykostenko.com/WARG/RNEWS](http://andreykostenko.com/WARG/RNEWS.html)
 
-- check out <span style='color:gold';>R cheatsheets</span> at <br> [andreykostenko.com.au/WARG/cheat](andreykostenko.com.au/WARG/cheat/)
+- check out <span style='color:gold';>R cheatsheets</span> at <br> [andreykostenko.com/WARG/cheat](http://andreykostenko.com/WARG/cheat/)
 
 - note SAS cheatsheets from the man who  revolutionised R (Hadley Wickham)
 
